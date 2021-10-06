@@ -88,6 +88,7 @@ connect.prototype.open = function () {
 				break;
 			case "yala.connect.widget.closed":
 				this.onEvent("EXIT", event.data.data);
+				this.onClose = { ...event.data.data };
 				connect.prototype.close(); // close widget on success
 				break;
 			case "yala.connect.login_attempt":
