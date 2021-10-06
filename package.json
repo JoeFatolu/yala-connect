@@ -1,0 +1,24 @@
+{
+  "name": "yala-connect",
+  "version": "1.0.0",
+  "description": "Connect to Yala Widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeFatolu/yala-connect.git"
+  },
+  "keywords": [
+    "Yala",
+    "Yala-Connect",
+    "Yala-Modal"
+  ],
+  "author": "JoeF",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeFatolu/yala-connect/issues"
+  },
+  "homepage": "https://github.com/JoeFatolu/yala-connect#readme"
+}
