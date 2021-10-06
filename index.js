@@ -8,7 +8,7 @@ const isRequired = (name) => {
 
 /**
  * This function creates a connect object and returns it's properties
- * @param {*} key public key gotten from Mono dashboard - REQUIRED
+ * @param {*} key public key gotten from yala dashboard - REQUIRED
  * @param {*} options optional params functions the be invoked on success, on load and on close
  */
 function connect({
@@ -80,13 +80,17 @@ connect.prototype.open = function () {
 			case "yala.connect.error_occured":
 				this.onEvent("ERROR", event.data.data);
 				break;
-			case "mono.connect.institution_selected":
+			case "yala.connect.institution_selected":
 				this.onEvent("INSTITUTION_SELECTED", event.data.data);
 				break;
-			case "mono.connect.on_exit":
+			case "yala.connect.on_exit":
 				this.onEvent("EXIT", event.data.data);
 				break;
-			case "mono.connect.login_attempt":
+			case "yala.connect.widget.closed":
+				this.onEvent("EXIT", event.data.data);
+				connect.prototype.close(); // close widget on success
+				break;
+			case "yala.connect.login_attempt":
 				this.onEvent("SUBMIT_CREDENTIALS", event.data.data);
 				break;
 			case "yala.connect.account_linked":
@@ -94,7 +98,7 @@ connect.prototype.open = function () {
 				this.onSuccess({ ...event.data.data });
 				connect.prototype.close(); // close widget on success
 				break;
-			case "mono.connect.account_selected":
+			case "yala.connect.account_selected":
 				this.onEvent("ACCOUNT_SELECTED", event.data.data);
 				break;
 			default:
