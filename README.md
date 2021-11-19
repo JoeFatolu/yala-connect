@@ -253,7 +253,7 @@ export default function App() {
 
 	return (
 		<div>
-			<button onClick={() => yalaConnect.open()}>Link account with Mono</button>
+			<button onClick={() => yalaConnect.open()}>Link account with Yela</button>
 		</div>
 	);
 }
