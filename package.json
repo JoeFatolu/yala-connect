@@ -1,24 +1,24 @@
 {
-  "name": "yala-connect",
+  "name": "clear-money-connect",
   "version": "1.0.6",
-  "description": "Connect to Yala Widget",
+  "description": "Connect to clear-money Widget",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoeFatolu/yala-connect.git"
+    "url": "git+https://github.com/JoeFatolu/clear-money-connect.git"
   },
   "keywords": [
-    "Yala",
-    "Yala-Connect",
-    "Yala-Modal"
+    "clear-money",
+    "clear-money-Connect",
+    "clear-money-Modal"
   ],
   "author": "JoeF",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JoeFatolu/yala-connect/issues"
+    "url": "https://github.com/JoeFatolu/clear-money-connect/issues"
   },
-  "homepage": "https://github.com/JoeFatolu/yala-connect#readme"
+  "homepage": "https://github.com/JoeFatolu/clear-money-connect#readme"
 }

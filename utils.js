@@ -1,155 +1,147 @@
 "use strict";
 
 var utils = () => {
-	function init(config) {
-		// check if container and iframe is already rendered on the DOM
-		if (
-			document.getElementById("yala-connect--widget-div") &&
-			document.getElementById("yala-connect--frame-id")
-		) {
-			document.getElementById("yala-connect--widget-div").remove();
-		}
+  function init(config) {
+    // check if container and iframe is already rendered on the DOM
+    if (document.getElementById("clear-money-connect--widget-div") && document.getElementById("clear-money-connect--frame-id")) {
+      document.getElementById("clear-money-connect--widget-div").remove();
+    }
 
-		const { key, onload, qs, onevent } = config;
-		const encodedKeys = ["data"]; // add keys for nested objects to be encoded
-		var source = new URL("http://167.71.25.25:4000");
-		source.searchParams.set("key", key);
-		source.searchParams.set("referrer", window.location.href);
+    const { key, onload, qs, onevent } = config;
+    const encodedKeys = ["data"]; // add keys for nested objects to be encoded
+    var source = new URL("http://167.71.25.25:4000");
+    source.searchParams.set("key", key);
+    source.searchParams.set("referrer", window.location.href);
 
-		Object.keys(qs).map((k) => {
-			if (encodedKeys.includes(k)) {
-				const encodedVal = encodeURIComponent(JSON.stringify(qs[k]));
-				return source.searchParams.set(k, encodedVal);
-			}
-			source.searchParams.set(k, qs[k]);
-		});
+    Object.keys(qs).map((k) => {
+      if (encodedKeys.includes(k)) {
+        const encodedVal = encodeURIComponent(JSON.stringify(qs[k]));
+        return source.searchParams.set(k, encodedVal);
+      }
+      source.searchParams.set(k, qs[k]);
+    });
 
-		var container = document.createElement("div");
-		container.setAttribute("id", "yala-connect--widget-div");
-		container.setAttribute("style", containerStyle);
-		document.body.insertBefore(container, document.body.childNodes[0]);
+    var container = document.createElement("div");
+    container.setAttribute("id", "clear-money-connect--widget-div");
+    container.setAttribute("style", containerStyle);
+    document.body.insertBefore(container, document.body.childNodes[0]);
 
-		var iframe = document.createElement("IFRAME");
-		iframe.src = `${source.href}`;
-		iframe.setAttribute("style", iframeStyle);
-		iframe.setAttribute("id", "yala-connect--frame-id");
-		iframe.setAttribute("allowfullscreen", "true");
-		iframe.setAttribute("frameborder", 0);
-		iframe.setAttribute("title", "yala connect");
-		iframe.setAttribute(
-			"sandbox",
-			"allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
-		);
-		iframe.onload = function () {
-			var loader = document.getElementById("yala-connect-app-loader");
-			if (iframe.style.visibility === "visible") {
-				loader.style.display = "none";
-			}
-			onload();
+    var iframe = document.createElement("IFRAME");
+    iframe.src = `${source.href}`;
+    iframe.setAttribute("style", iframeStyle);
+    iframe.setAttribute("id", "clear-money-connect--frame-id");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("frameborder", 0);
+    iframe.setAttribute("title", "clear-money connect");
+    iframe.setAttribute("sandbox", "allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups");
+    iframe.onload = function () {
+      var loader = document.getElementById("clear-money-connect-app-loader");
+      if (iframe.style.visibility === "visible") {
+        loader.style.display = "none";
+      }
+      onload();
 
-			// dispatch LOADED event
-			let event = new Event("message");
-			let eventData = {
-				type: "yala.connect.widget_loaded",
-				data: { timestamp: Date.now() },
-			};
+      // dispatch LOADED event
+      let event = new Event("message");
+      let eventData = {
+        type: "clear-money.connect.widget_loaded",
+        data: { timestamp: Date.now() },
+      };
 
-			event["data"] = Object.assign({}, eventData);
-			window.dispatchEvent(event);
+      event["data"] = Object.assign({}, eventData);
+      window.dispatchEvent(event);
 
-			// manually trigger LOADED since
-			// connect does not listen for events until the widget is opened
-			onevent("LOADED", event.data.data);
-		};
+      // manually trigger LOADED since
+      // connect does not listen for events until the widget is opened
+      onevent("LOADED", event.data.data);
+    };
 
-		var loader = createLoader();
-		document.getElementById("yala-connect--widget-div").appendChild(loader);
-		document.getElementById("yala-connect--widget-div").appendChild(iframe);
-	}
+    var loader = createLoader();
+    document.getElementById("clear-money-connect--widget-div").appendChild(loader);
+    document.getElementById("clear-money-connect--widget-div").appendChild(iframe);
+  }
 
-	function turnOnVisibility() {
-		var container = document.getElementById("yala-connect--widget-div");
-		var frame = document.getElementById("yala-connect--frame-id");
-		container.style.display = "flex";
-		frame.style.display = "block";
-		container.style.visibility = "visible";
-		frame.style.visibility = "visible";
-	}
+  function turnOnVisibility() {
+    var container = document.getElementById("clear-money-connect--widget-div");
+    var frame = document.getElementById("clear-money-connect--frame-id");
+    container.style.display = "flex";
+    frame.style.display = "block";
+    container.style.visibility = "visible";
+    frame.style.visibility = "visible";
+  }
 
-	function turnOffVisibility() {
-		var container = document.getElementById("yala-connect--widget-div");
-		var frame = document.getElementById("yala-connect--frame-id");
-		container.style.display = "none";
-		frame.style.display = "none";
-		container.style.visibility = "hidden";
-		frame.style.visibility = "hidden";
-	}
+  function turnOffVisibility() {
+    var container = document.getElementById("clear-money-connect--widget-div");
+    var frame = document.getElementById("clear-money-connect--frame-id");
+    container.style.display = "none";
+    frame.style.display = "none";
+    container.style.visibility = "hidden";
+    frame.style.visibility = "hidden";
+  }
 
-	function openWidget() {
-		var container = document.getElementById("yala-connect--widget-div");
-		var loader = document.getElementById("yala-connect-app-loader");
-		var frame = document.getElementById("yala-connect--frame-id");
-		container.style.visibility = "visible";
-		container.style.display = "flex";
-		loader.style.display = "block";
+  function openWidget() {
+    var container = document.getElementById("clear-money-connect--widget-div");
+    var loader = document.getElementById("clear-money-connect-app-loader");
+    var frame = document.getElementById("clear-money-connect--frame-id");
+    container.style.visibility = "visible";
+    container.style.display = "flex";
+    loader.style.display = "block";
 
-		setTimeout(() => {
-			turnOnVisibility();
-			frame.focus({ preventScroll: false });
-			container.focus({ preventScroll: false });
+    setTimeout(() => {
+      turnOnVisibility();
+      frame.focus({ preventScroll: false });
+      container.focus({ preventScroll: false });
 
-			// dispatch OPENED event
-			let event = new Event("message");
-			let eventData = {
-				type: "yala.connect.widget_opened",
-				data: { timestamp: Date.now() },
-			};
-			event["data"] = Object.assign({}, eventData);
-			window.dispatchEvent(event);
-		}, 2000);
-	}
+      // dispatch OPENED event
+      let event = new Event("message");
+      let eventData = {
+        type: "clear-money.connect.widget_opened",
+        data: { timestamp: Date.now() },
+      };
+      event["data"] = Object.assign({}, eventData);
+      window.dispatchEvent(event);
+    }, 2000);
+  }
 
-	function closeWidget() {
-		turnOffVisibility();
-	}
+  function closeWidget() {
+    turnOffVisibility();
+  }
 
-	function createLoader() {
-		let loaderDiv = document.createElement("div");
-		let childDiv = document.createElement("div");
-		loaderDiv.setAttribute("id", "yala-connect-app-loader");
-		loaderDiv.classList.add("app-loader");
-		childDiv.classList.add("app-loader__spinner");
+  function createLoader() {
+    let loaderDiv = document.createElement("div");
+    let childDiv = document.createElement("div");
+    loaderDiv.setAttribute("id", "clear-money-connect-app-loader");
+    loaderDiv.classList.add("app-loader");
+    childDiv.classList.add("app-loader__spinner");
 
-		for (let i = 0; i < 12; i++) {
-			let div = document.createElement("div");
-			childDiv.appendChild(div);
-		}
-		loaderDiv.appendChild(childDiv);
-		return loaderDiv;
-	}
+    for (let i = 0; i < 12; i++) {
+      let div = document.createElement("div");
+      childDiv.appendChild(div);
+    }
+    loaderDiv.appendChild(childDiv);
+    return loaderDiv;
+  }
 
-	function addStyle() {
-		let styleSheet = document.createElement("style");
-		styleSheet.type = "text/css";
-		styleSheet.innerText = loaderStyles;
-		document.head.appendChild(styleSheet);
-	}
+  function addStyle() {
+    let styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = loaderStyles;
+    document.head.appendChild(styleSheet);
+  }
 
-	return {
-		openWidget: openWidget,
-		closeWidget: closeWidget,
-		createLoader: createLoader,
-		addStyle: addStyle,
-		init,
-	};
+  return {
+    openWidget: openWidget,
+    closeWidget: closeWidget,
+    createLoader: createLoader,
+    addStyle: addStyle,
+    init,
+  };
 };
 
 module.exports = utils;
 
-const containerStyle =
-	"position:fixed;overflow: hidden;display: none;justify-content: center;align-items: center;z-index: 999999999;height: 100%;width: 100%;color: transparent;background: rgba(0, 0, 0, 0.6);visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
-const iframeStyle =
-	"position: fixed;display: none;overflow: hidden;z-index: 999999999;width: 100%;height: 100%;transition: opacity 0.3s ease 0s;visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
+const containerStyle = "position:fixed;overflow: hidden;display: none;justify-content: center;align-items: center;z-index: 999999999;height: 100%;width: 100%;color: transparent;background: rgba(0, 0, 0, 0.6);visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
+const iframeStyle = "position: fixed;display: none;overflow: hidden;z-index: 999999999;width: 100%;height: 100%;transition: opacity 0.3s ease 0s;visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
 const loaderStyles = `.app-loader {
   text-align: center;
   color: white;

@@ -1,6 +1,6 @@
-# Yala Connect.js
+# clear-money Connect.js
 
-Yala Connect is a quick and secure way to link bank accounts to Yala from within your app. Yala Connect is a drop-in framework that handles connecting a financial institution to your app (credential validation, multi-factor authentication, error handling, etc). It works with all major javascript frameworks.
+clear-money Connect is a quick and secure way to link bank accounts to clear-money from within your app. clear-money Connect is a drop-in framework that handles connecting a financial institution to your app (credential validation, multi-factor authentication, error handling, etc). It works with all major javascript frameworks.
 
 ## Requirements
 
@@ -8,14 +8,14 @@ Node 10 or higher.
 
 ## Getting Started
 
-1. Register on the [Yala](https://yala-yala.netlify.app) website and get your public and secret keys.
+1. Register on the [clear-money](https://clear-money-clear-money.netlify.app) website and get your public and secret keys.
 
 ## Installation
 
 You can install the package using NPM or Yarn;
 
 ```bash
-npm install yala-connect
+npm install clear-money-connect
 ```
 
 or
@@ -27,7 +27,7 @@ yarn add ala-connect
 Then import it into your project;
 
 ```js
-import Connect from "yala-connect";
+import Connect from "clear-money-connect";
 ```
 
 ## Usage
@@ -52,10 +52,10 @@ Click the links below for detailed examples on how to use connect.js with your f
 ### <a name="key"></a> `key`
 
 **Required**  
-This is your Yala public API key from the [Yala dashboard](https://app.withyala.com/apps).
+This is your clear-money public API key from the [clear-money dashboard](https://app.withclear-money.com/apps).
 
 ```js
-new Connect({ key: "yala_public_key" });
+new Connect({ key: "clear-money_public_key" });
 ```
 
 ### <a name="onSuccess"></a> `onSuccess`
@@ -65,7 +65,7 @@ This function is called when a user has successfully onboarded their account. It
 
 ```js
 new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: (data) => {
 		// in the case of authentication auth code is returned
 		console.log("auth code", data.code);
@@ -78,11 +78,11 @@ new Connect({
 
 ### <a name="onClose"></a> `onClose`
 
-The optional closure is called when a user has specifically exited the Yala Connect flow (i.e. the widget is not visible to the user). It does not take any arguments.
+The optional closure is called when a user has specifically exited the clear-money Connect flow (i.e. the widget is not visible to the user). It does not take any arguments.
 
 ```js
 new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("auth code", code),
 	onClose: () => console.log("widget has been closed"),
 });
@@ -94,7 +94,7 @@ This function is invoked the widget has been mounted unto the DOM. You can handl
 
 ```js
 new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("auth code", code),
 	onLoad: () => console.log("widget loaded successfully"),
 });
@@ -102,13 +102,13 @@ new Connect({
 
 ### <a name="onEvent"></a> `onEvent`
 
-This optional function is called when certain events in the Yala Connect flow have occurred, for example, when the user selected an institution. This enables your application to gain further insight into the Yala Connect onboarding flow.
+This optional function is called when certain events in the clear-money Connect flow have occurred, for example, when the user selected an institution. This enables your application to gain further insight into the clear-money Connect onboarding flow.
 
 See the [data](#dataObject) object below for details.
 
 ```js
 new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("auth code", code),
 	onEvent: (eventName, data) => {
 		console.log(eventName);
@@ -119,11 +119,11 @@ new Connect({
 
 ### <a name="reference"></a> `reference`
 
-This optional string is used as a reference to the current instance of Yala Connect. It will be passed to the data object in all onEvent callbacks. It's recommended to pass a random string.
+This optional string is used as a reference to the current instance of clear-money Connect. It will be passed to the data object in all onEvent callbacks. It's recommended to pass a random string.
 
 ```js
 new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("auth code", code),
 	reference: "some_random_string",
 });
@@ -139,7 +139,7 @@ It also allows an optional configuration object to be passed. When the setup met
 
 ```js
 const connect = new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	tenure: 60,
 	amount: 500,
 	onSuccess: ({ code }) => console.log("code", code),
@@ -161,7 +161,7 @@ This method makes the widget visible to the user.
 
 ```js
 const connect = new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("code", code),
 });
 
@@ -175,7 +175,7 @@ This method programatically hides the widget after it's been opened.
 
 ```js
 const connect = new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("code", code),
 });
 
@@ -192,7 +192,7 @@ The onEvent callback returns two paramters, [eventName](#eventName) a string con
 
 ```js
 const connect = new Connect({
-	key: "yala_public_key",
+	key: "clear-money_public_key",
 	onSuccess: ({ code }) => console.log("code", code),
 	onEvent: (eventName, data) => {
 		if (eventName == "OPENED") {
@@ -233,11 +233,11 @@ Link a user account
 
 ```js
 import React from "react";
-import YalaConnect from "yala-connect";
+import clear-moneyConnect from "clear-money-connect";
 
 export default function App() {
-	const yalaConnect = React.useMemo(() => {
-		const yalaInstance = new YalaConnect({
+	const clear-moneyConnect = React.useMemo(() => {
+		const clear-moneyInstance = new clear-moneyConnect({
 			onClose: () => console.log("Widget closed"),
 			onLoad: () => console.log("Widget loaded successfully"),
 			onSuccess: ({ code }) => console.log(`Linked successfully: ${code}`),
@@ -246,14 +246,14 @@ export default function App() {
 			tenure: "tenure",
 		});
 
-		yalaInstance.setup();
+		clear-moneyInstance.setup();
 
-		return yalaInstance;
+		return clear-moneyInstance;
 	}, []);
 
 	return (
 		<div>
-			<button onClick={() => yalaConnect.open()}>Link account with Yela</button>
+			<button onClick={() => clear-moneyConnect.open()}>Link account with Yela</button>
 		</div>
 	);
 }
@@ -261,8 +261,8 @@ export default function App() {
 
 ## Support
 
-If you're having general trouble with Yala Connec or your Yala integration, please reach out to us at <hi@yala.co> or come chat with us on Slack. We're proud of our level of service, and we're more than happy to help you out with your integration to Yala.
+If you're having general trouble with clear-money Connec or your clear-money integration, please reach out to us at <hi@clear-money.co> or come chat with us on Slack. We're proud of our level of service, and we're more than happy to help you out with your integration to clear-money.
 
 ## Contributing
 
-If you find any issue using this package please let us know by filing an issue right [here](https://github.com/JoeFatolu/yala-connect/issues).
+If you find any issue using this package please let us know by filing an issue right [here](https://github.com/JoeFatolu/clear-money-connect/issues).
