@@ -1,6 +1,6 @@
 {
-  "name": "clear-money-connect",
-  "version": "1.0.6",
+  "name": "@yayn-creatives/clearify-connect",
+  "version": "0.0.1",
   "description": "Connect to clear-money Widget",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoeFatolu/clear-money-connect.git"
+    "url": "git+https://github.com/yayn-creatives/clearify-connect.git"
   },
   "keywords": [
     "clear-money",
@@ -16,9 +16,5 @@
     "clear-money-Modal"
   ],
   "author": "JoeF",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JoeFatolu/clear-money-connect/issues"
-  },
-  "homepage": "https://github.com/JoeFatolu/clear-money-connect#readme"
+  "license": "ISC"
 }

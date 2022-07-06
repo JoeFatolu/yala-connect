@@ -7,10 +7,12 @@ var utils = () => {
       document.getElementById("clear-money-connect--widget-div").remove();
     }
 
-    const { key, onload, qs, onevent } = config;
+    const { key, customerId,bankId, onload, qs, onevent } = config;
     const encodedKeys = ["data"]; // add keys for nested objects to be encoded
-    var source = new URL("http://167.71.25.25:4000");
+    var source = new URL("http://localhost:7000");
     source.searchParams.set("key", key);
+    source.searchParams.set("customerId", customerId);
+    source.searchParams.set("bankId", bankId);
     source.searchParams.set("referrer", window.location.href);
 
     Object.keys(qs).map((k) => {

@@ -11,12 +11,14 @@ const isRequired = (name) => {
  * @param {*} key public key gotten from clear-money dashboard - REQUIRED
  * @param {*} options optional params functions the be invoked on success, on load and on close
  */
-function connect({ key, onClose = anonFunc, onSuccess, onLoad = anonFunc, onEvent = anonFunc, ...rest }) {
+function connect({ key, bankId, customerId, onClose = anonFunc, onSuccess, onLoad = anonFunc, onEvent = anonFunc, ...rest }) {
   if (!(this instanceof connect))
     return new connect({
       key,
       onClose,
       onSuccess,
+      customerId,
+      bankId,
       onLoad,
       onEvent,
       ...rest,
@@ -41,6 +43,8 @@ connect.prototype.setup = function (setup_configuration = {}) {
 
   connect.prototype.utils.init({
     key: this.key,
+    bankId: this.bankId,
+    customerId: this.customerId,
     qs: qs,
     tenure: this.tenure,
     onload: this.onLoad,
