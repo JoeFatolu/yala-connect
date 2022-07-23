@@ -3,13 +3,16 @@
 var utils = () => {
   function init(config) {
     // check if container and iframe is already rendered on the DOM
-    if (document.getElementById("clear-money-connect--widget-div") && document.getElementById("clear-money-connect--frame-id")) {
+    if (
+      document.getElementById("clear-money-connect--widget-div") &&
+      document.getElementById("clear-money-connect--frame-id")
+    ) {
       document.getElementById("clear-money-connect--widget-div").remove();
     }
 
-    const { key, customerId,bankId, onload, qs, onevent } = config;
+    const { key, customerId, bankId, onload, qs, onevent } = config;
     const encodedKeys = ["data"]; // add keys for nested objects to be encoded
-    var source = new URL("https://seahorse-app-uxu42.ondigitalocean.app");
+    var source = new URL("https://leafy-trifle-143b58.netlify.app");
     source.searchParams.set("key", key);
     source.searchParams.set("customerId", customerId);
     source.searchParams.set("bankId", bankId);
@@ -35,7 +38,10 @@ var utils = () => {
     iframe.setAttribute("allowfullscreen", "true");
     iframe.setAttribute("frameborder", 0);
     iframe.setAttribute("title", "clear-money connect");
-    iframe.setAttribute("sandbox", "allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups");
+    iframe.setAttribute(
+      "sandbox",
+      "allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-popups"
+    );
     iframe.onload = function () {
       var loader = document.getElementById("clear-money-connect-app-loader");
       if (iframe.style.visibility === "visible") {
@@ -142,8 +148,10 @@ var utils = () => {
 
 module.exports = utils;
 
-const containerStyle = "position:fixed;overflow: hidden;display: none;justify-content: center;align-items: center;z-index: 999999999;height: 100%;width: 100%;color: transparent;background: rgba(0, 0, 0, 0.6);visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
-const iframeStyle = "position: fixed;display: none;overflow: hidden;z-index: 999999999;width: 100%;height: 100%;transition: opacity 0.3s ease 0s;visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
+const containerStyle =
+  "position:fixed;overflow: hidden;display: none;justify-content: center;align-items: center;z-index: 999999999;height: 100%;width: 100%;color: transparent;background: rgba(0, 0, 0, 0.6);visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
+const iframeStyle =
+  "position: fixed;display: none;overflow: hidden;z-index: 999999999;width: 100%;height: 100%;transition: opacity 0.3s ease 0s;visibility:hidden;margin: 0;top:0;right:0;bottom:0;left:0;";
 const loaderStyles = `.app-loader {
   text-align: center;
   color: white;
