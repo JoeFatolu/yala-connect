@@ -9,7 +9,7 @@ var utils = () => {
 
     const { key, customerId,bankId, onload, qs, onevent } = config;
     const encodedKeys = ["data"]; // add keys for nested objects to be encoded
-    var source = new URL("http://localhost:7000");
+    var source = new URL("https://seahorse-app-uxu42.ondigitalocean.app");
     source.searchParams.set("key", key);
     source.searchParams.set("customerId", customerId);
     source.searchParams.set("bankId", bankId);
