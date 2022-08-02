@@ -120,13 +120,9 @@ var utils = () => {
     let childDiv = document.createElement("div");
     loaderDiv.setAttribute("id", "clear-money-connect-app-loader");
     loaderDiv.classList.add("app-loader");
-    childDiv.classList.add("app-loader__spinner");
+    childDiv.innerHTML =
+      '<svg viewBox="0 0 512 512"><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" fill="#fff"/> </svg>';
 
-    for (let i = 0; i < 12; i++) {
-      let div = document.createElement("div");
-      childDiv.appendChild(div);
-    }
-    loaderDiv.appendChild(childDiv);
     return loaderDiv;
   }
 
@@ -160,119 +156,19 @@ const loaderStyles = `.app-loader {
   position: fixed;
 }
 
+
+.app-loader svg {
+  width: 24px;
+  height: 24px;
+  animation: app-loader__spinner linear 1s infinite;
+}
+
 @-webkit-keyframes app-loader__spinner {
   0% {
-    opacity: 1;
+    transform: rotate(0deg);
   }
   100% {
-    opacity: 0;
+    transform: rotate(360deg);
   }
-}
-
-.app-loader__spinner {
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-}
-
-.app-loader__spinner div {
-  position: absolute;
-  -webkit-animation: app-loader__spinner linear 1s infinite;
-  animation: app-loader__spinner linear 1s infinite;
-  background: white;
-  width: 10px;
-  height: 30px;
-  border-radius: 40%;
-  -webkit-transform-origin: 5px 65px;
-  transform-origin: 5px 65px;
-}
-
-.app-loader__spinner div:nth-child(1) {
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation-delay: -0.916666666666667s;
-  animation-delay: -0.916666666666667s;
-}
-
-.app-loader__spinner div:nth-child(2) {
-  -webkit-transform: rotate(30deg);
-  transform: rotate(30deg);
-  -webkit-animation-delay: -0.833333333333333s;
-  animation-delay: -0.833333333333333s;
-}
-
-.app-loader__spinner div:nth-child(3) {
-  -webkit-transform: rotate(60deg);
-  transform: rotate(60deg);
-  -webkit-animation-delay: -0.75s;
-  animation-delay: -0.75s;
-}
-
-.app-loader__spinner div:nth-child(4) {
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -webkit-animation-delay: -0.666666666666667s;
-  animation-delay: -0.666666666666667s;
-}
-
-.app-loader__spinner div:nth-child(5) {
-  -webkit-transform: rotate(120deg);
-  transform: rotate(120deg);
-  -webkit-animation-delay: -0.583333333333333s;
-  animation-delay: -0.583333333333333s;
-}
-
-.app-loader__spinner div:nth-child(6) {
-  -webkit-transform: rotate(150deg);
-  transform: rotate(150deg);
-  -webkit-animation-delay: -0.5s;
-  animation-delay: -0.5s;
-}
-
-.app-loader__spinner div:nth-child(7) {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  -webkit-animation-delay: -0.416666666666667s;
-  animation-delay: -0.416666666666667s;
-}
-
-.app-loader__spinner div:nth-child(8) {
-  -webkit-transform: rotate(210deg);
-  transform: rotate(210deg);
-  -webkit-animation-delay: -0.333333333333333s;
-  animation-delay: -0.333333333333333s;
-}
-
-.app-loader__spinner div:nth-child(9) {
-  -webkit-transform: rotate(240deg);
-  transform: rotate(240deg);
-  -webkit-animation-delay: -0.25s;
-  animation-delay: -0.25s;
-}
-
-.app-loader__spinner div:nth-child(10) {
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
-  -webkit-animation-delay: -0.166666666666667s;
-  animation-delay: -0.166666666666667s;
-}
-
-.app-loader__spinner div:nth-child(11) {
-  -webkit-transform: rotate(300deg);
-  transform: rotate(300deg);
-  -webkit-animation-delay: -0.083333333333333s;
-  animation-delay: -0.083333333333333s;
-}
-
-.app-loader__spinner div:nth-child(12) {
-  -webkit-transform: rotate(330deg);
-  transform: rotate(330deg);
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-.app-loader__spinner {
-  -webkit-transform: translate(-20px, -20px) scale(0.2) translate(20px, 20px);
-  transform: translate(-20px, -20px) scale(0.2) translate(20px, 20px);
 }
 `;
