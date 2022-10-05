@@ -151,7 +151,6 @@ const iframeStyle =
 const loaderStyles = `.app-loader {
   text-align: center;
   color: white;
-  margin-right: -30px;
   width: 100%;
   position: fixed;
 }
