@@ -12,7 +12,7 @@ var utils = () => {
 
     const { key, customerId, bankId, onload, qs, onevent } = config;
     const encodedKeys = ["data"]; // add keys for nested objects to be encoded
-    var source = new URL("https://leafy-trifle-143b58.netlify.app");
+    var source = new URL(process.env.REACT_APP_WIDGET_URL);
     source.searchParams.set("key", key);
     source.searchParams.set("customerId", customerId);
     source.searchParams.set("bankId", bankId);
